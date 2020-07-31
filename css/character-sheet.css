@@ -1,0 +1,22 @@
+* {
+    margin: 0px;
+}
+
+.main-component {
+    margin: 5px 0px;
+    border: 2px solid black;
+}
+
+.character-attributes {
+    display: flex;
+    justify-content: center;
+}
+
+.character-attributes > div {
+    flex-basis: 50%;
+    font-size: 24px;
+}
+
+/* .displayed-attribute-label {
+    text-align: left;
+} */

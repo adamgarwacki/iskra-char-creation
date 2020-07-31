@@ -1,0 +1,55 @@
+.input-grouping-element {
+    margin: 8px 0px;
+}
+
+fieldset {
+    box-sizing: border-box;
+    display: flex;
+}
+
+.name-concept > input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.name-concept > textarea {
+    box-sizing: border-box;
+    width: 100%;
+    resize: none;
+}
+
+.attributes {
+    display: flex;
+    justify-content: center;
+}
+
+fieldset div {
+    margin: 10px auto;
+    padding: 5px 0px;
+    text-align: center;
+}
+
+.wrong-number {
+    background-color: red;
+}
+
+.attributes > div > input[type="number"] {
+    display: inline-block;
+    width: 50px;
+    line-height: 50px;
+    font-size: 42px;
+    /* margin: auto; */
+    text-align: center;
+}
+
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.items div > input[type="number"],
+.abilities div > input[type="number"] {
+    display: inline-block;
+    width: 25px;
+}

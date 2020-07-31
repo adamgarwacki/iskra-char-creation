@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/character-sheet.css">
+    <title>Iskra - karta postaci</title>
+</head>
+
+<!--  onload="loadCharacterInfo()" -->
+<body>
+    <div class="main-container">
+        <header class="main-header main-component">
+            <h1 class="character-name" id="character-name">
+                <!-- Tutaj idzie imię postaci -->
+            </h1>
+            <p class="character-concept" id="character-concept">
+                <!-- Tutaj idzie koncept postaci -->
+            </p>
+        </header>
+
+        <section class="main-component character-attributes">
+            <div>
+                <p class="displayed-attribute-label">Siła:</p>
+                <p class="displayed-attribute-label">Zręczność:</p>
+                <p class="displayed-attribute-label">Wytrzymałość:</p>
+                <p class="displayed-attribute-label">Intelekt:</p>
+                <p class="displayed-attribute-label">Charyzma:</p>
+            </div>
+            
+            <div>
+                <p class="displayed-attribute" id="displayed-attribute-strength"></p>
+                <p class="displayed-attribute" id="displayed-attribute-dexterity"></p>
+                <p class="displayed-attribute" id="displayed-attribute-constitution"></p>
+                <p class="displayed-attribute" id="displayed-attribute-intellect"></p>
+                <p class="displayed-attribute" id="displayed-attribute-charisma"></p>
+            </div>
+        </section>
+
+        <section class="main-component character-abilities">
+            <div>
+
+            </div>
+
+            <div>
+
+            </div>
+        </section>
+    </div>
+
+    <script src="js/characterSheet.js"></script>
+</body>
+
+</html>
