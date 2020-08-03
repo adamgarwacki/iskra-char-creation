@@ -4,25 +4,52 @@
     border: 1px solid #e0e0e0;
 }
 
-.character-attributes {
+.section-heading {
+    margin-bottom: 10px;
+}
+
+.character-attrs-stats {
     display: flex;
     justify-content: center;
 }
 
-.character-attributes > div {
+.character-attrs-stats > div {
     flex-basis: 50%;
     font-size: 24px;
 }
 
-.ability-table {
+.character-attrs-stats table {
+    height: 250px;
+}
+
+input[type="number"] {
+    width: 64px;
+    font-size: 24px;
+    text-align: center;
+}
+
+table {
     width: 100%;
 }
 
-.ability-table th {
-    font-weight: 800;
+th {
+    border: 1px solid #e0e0e0;
 }
 
-tr th:nth-child(1),
-tr th:nth-child(2) {
+.table-attrs-stats tr th,
+.table-attrs-stats tr td {
+    width: 50%;
+}
+
+.table-abilities th:nth-child(1),
+.table-abilities th:nth-child(2) {
     width: 20%;
+}
+
+.table-equipment th:nth-child(1) {
+    width: 15%;
+}
+
+.table-equipment th:nth-child(6) {
+    width: 30%;
 }

@@ -58,7 +58,6 @@ const addNewItem = () => {
     
     let itemKey = Date.now();
     characterEquipment[itemKey] = allItemValues;
-    console.log(characterEquipment);
 
     /* WYŚWIETLANIE OBIEKTU */
     let itemEntry = document.createElement('div');
@@ -95,13 +94,11 @@ const addNewItem = () => {
 
 const changeItemQuantity = (targetParentId) => {
     characterEquipment[targetParentId]['item-quantity'] = event.target.value;
-    console.log(characterEquipment);
 }
 
 const removeItemEntry = (idtoRemove) => {
     document.getElementById(idtoRemove).remove();
     delete characterEquipment[idtoRemove];
-    console.log(characterEquipment);
 }
 
 
@@ -125,7 +122,6 @@ const addNewAbility = () => {
     
     let abilityKey = Date.now();
     characterAbilities[abilityKey] = allAbilityValues;
-    console.log(characterAbilities);
 
     /* WYŚWIETLANIE OBIEKTU */
     let abilityEntry = document.createElement('div');
@@ -150,7 +146,6 @@ const addNewAbility = () => {
 const removeAbilityEntry = (idtoRemove) => {
     document.getElementById(idtoRemove).remove();
     delete characterAbilities[idtoRemove];
-    console.log(characterAbilities);
 }
 
 
@@ -162,11 +157,6 @@ const saveCharacter = (event) => {
 
     let charName = document.getElementById('name').value;
     let charConcept = document.getElementById('concept').value;
-    // let charAttrStr = document.getElementById('attribute-strength').value;
-    // let charAttrDex = document.getElementById('attribute-dexterity').value;
-    // let charAttrCon = document.getElementById('attribute-constitution').value;
-    // let charAttrInt = document.getElementById('attribute-intellect').value;
-    // let charAttrCha = document.getElementById('attribute-charisma').value;
 
     let allAttrValues = [];
     for(let element of document.getElementsByClassName('character-attribute')) {
@@ -176,13 +166,7 @@ const saveCharacter = (event) => {
     let charObj = {
         charName:charName,
         charConcept:charConcept,
-        // charAttributes: {
-        //     charAttrStr: charAttrStr,
-        //     charAttrDex: charAttrDex,
-        //     charAttrCon: charAttrCon,
-        //     charAttrInt: charAttrInt,
-        //     charAttrCha: charAttrCha
-        // },
+        focusPoints: 0,
         charAttributes:allAttrValues,
         charEquipment:characterEquipment,
         charAbilities:characterAbilities

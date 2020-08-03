@@ -23,30 +23,79 @@
             </p>
         </header>
 
-        <section class="main-component character-attributes">
-            <div>
-                <p class="displayed-attribute-label">Siła:</p>
-                <p class="displayed-attribute-label">Zręczność:</p>
-                <p class="displayed-attribute-label">Wytrzymałość:</p>
-                <p class="displayed-attribute-label">Intelekt:</p>
-                <p class="displayed-attribute-label">Charyzma:</p>
-            </div>
+        <section class="main-component">
+            <h2 class="section-heading">Atrybuty i Statystyki</h2>
+            <div class="character-attrs-stats">
+                <div>
+                    <table class="table-attrs-stats">
+                        <tr>
+                            <th class="displayed-attribute-label">Siła</th>
+                            <td class="displayed-attribute" id="displayed-attribute-strength"></td>
+                        </tr>
+                        <tr>
+                            <th class="displayed-attribute-label">Zręczność</th>
+                            <td class="displayed-attribute" id="displayed-attribute-dexterity"></td>
+                        </tr>
+                        <tr>
+                            <th class="displayed-attribute-label">Wytrzymałość</th>
+                            <td class="displayed-attribute" id="displayed-attribute-constitution"></td>
+                        </tr>
+                        <tr>
+                            <th class="displayed-attribute-label">Intelekt</th>
+                            <td class="displayed-attribute" id="displayed-attribute-intellect"></td>
+                        </tr>
+                        <tr>
+                            <th class="displayed-attribute-label">Charyzma</th>
+                            <td class="displayed-attribute" id="displayed-attribute-charisma"></td>
+                        </tr>
+                    </table>
+                </div>
 
-            <div>
-                <p class="displayed-attribute" id="displayed-attribute-strength"></p>
-                <p class="displayed-attribute" id="displayed-attribute-dexterity"></p>
-                <p class="displayed-attribute" id="displayed-attribute-constitution"></p>
-                <p class="displayed-attribute" id="displayed-attribute-intellect"></p>
-                <p class="displayed-attribute" id="displayed-attribute-charisma"></p>
+                <div>
+                    <table class="table-attrs-stats">
+                        <tr>
+                            <th><label for="focus-points-container">Punkty skupienia</label></th>
+                            <td><input type="number" name="focus-points-container" id="focus-points-container" min="0" value="0"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="defense-container">Obrona</label></th>
+                            <td><input type="number" name="defense-container" id="defense-container" min="0" value="0"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="attack-mod-container">Modyfikator ataku</label></th>
+                            <td><input type="number" name="attack-mod-container" id="attack-mod-container" value="0"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="damage-container">Obrażenia</label></th>
+                            <td><input type="number" name="damage-container" id="damage-container" min="1" value="1"></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </section>
 
         <section class="main-component character-abilities">
-            <table class="ability-table" id="ability-table">
+            <h2 class="section-heading">Zdolności</h2>
+            <table class="table-abilities" id="table-abilities">
                 <tr>
                     <th>Nazwa</th>
                     <th>Koszt</th>
                     <th>Opis</th>
+                </tr>
+            </table>
+        </section>
+
+        <section class="main-component character-equipment">
+            <h2 class="section-heading">Ekwipunek</h2>
+            <table class="table-equipment" id="table-equipment">
+                <tr>
+                    <th>Nazwa</th>
+                    <th>Obrona</th>
+                    <th>Atak</th>
+                    <th>Obrażenia</th>
+                    <th>Trwałość</th>
+                    <th>Opis przedmiotu</th>
+                    <th>Ilość</th>
                 </tr>
             </table>
         </section>

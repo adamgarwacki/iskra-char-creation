@@ -42,12 +42,6 @@ fieldset div {
     text-align: center;
 }
 
-input[type='number']::-webkit-inner-spin-button, 
-input[type='number']::-webkit-outer-spin-button { 
-    -webkit-appearance: none;
-    margin: 0;
-}
-
 .items div > input[type="number"],
 .abilities div > input[type="number"] {
     display: inline-block;
