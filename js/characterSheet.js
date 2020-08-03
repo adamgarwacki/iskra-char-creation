@@ -15,6 +15,26 @@ const loadCharacterInfo = () => {
         domElement.innerText = characterInfo.charAttributes[attributeIterator];
         attributeIterator++;
     }
+
+    let characterAbilitiesContainer = document.getElementById('ability-table');
+
+    Object.entries(characterInfo.charAbilities).forEach(ability => {
+        
+        let abilityEntry = document.createElement('tr');
+        let abilityName = document.createElement('td');
+        let abilityCost = document.createElement('td');
+        let abilityDescription = document.createElement('td');
+
+        abilityName.innerText = ability[1]['ability-name'];
+        abilityCost.innerText = ability[1]['ability-cost'];
+        abilityDescription.innerText = ability[1]['ability-description'];
+
+        abilityEntry.appendChild(abilityName);
+        abilityEntry.appendChild(abilityCost);
+        abilityEntry.appendChild(abilityDescription);
+        
+        characterAbilitiesContainer.appendChild(abilityEntry);
+    });
 }
 
 loadCharacterInfo();

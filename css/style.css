@@ -1,3 +1,17 @@
+* {
+    margin: 0px;
+}
+
+a {
+    text-decoration: none;
+    color: #e0e0e0;
+}
+
+body {
+    background-color: #272727;
+    color: #e0e0e0;
+}
+
 .main-container {
     width: 50%;
     margin: auto;
@@ -12,5 +26,5 @@
 .character-name-container {
     margin: 8px 0px;
     box-sizing: border-box;
-    border: 2px solid #000;
+    border: 2px solid #e0e0e0;
 }
