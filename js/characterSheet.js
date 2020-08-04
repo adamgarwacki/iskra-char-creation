@@ -79,4 +79,8 @@ const loadCharacterInfo = () => {
     });
 }
 
+const showMenu = () => {
+    document.getElementById('blending-curtain').classList.toggle('show');
+}
+
 loadCharacterInfo();
