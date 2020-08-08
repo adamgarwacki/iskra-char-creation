@@ -5,7 +5,7 @@
     width: 100px;
     height: 100px;
     cursor: pointer;
-    z-index: 11;
+    z-index: 11111111;
 }
 
 .menu-icon svg {
@@ -33,13 +33,8 @@
     transition: 0.5s;
     width: 100%;
     height: 100vh;
-    display: none;
-    z-index: 1;
+    z-index: 11111;
     background-color: #000000bd;
-}
-
-.show {
-    display: block;
 }
 
 .menu {
@@ -55,10 +50,22 @@
 }
 
 .menu a {
-    /* box-sizing: border-box; */
     display: block;
     margin: 10px 20px;
     transition: 0.2s;
+}
+
+.roll-container {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    width: 200px;
+    height: 150px;
+    border: #e0e0e0 solid 1px;
+}
+
+.hide {
+    display: none;
 }
 
 /* MAIN CONTENT */

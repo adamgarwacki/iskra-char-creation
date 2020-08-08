@@ -19,12 +19,17 @@
                 d="m39.2 54.2c0 0 4-5.6 3.8-8.8-0.4-5.4-8.7-13.9-8.7-13.9 0 0 8.4 8.3 13.9 8.7 3.2 0.2 8.8-3.8 8.8-3.8 0 0-4.2 5.2-4.3 8.3-0.1 3.6 4.7 9.9 4.7 9.9 0 0-6.2-4.7-9.9-4.7-3.1 0.1-8.3 4.3-8.3 4.3zm17.8 58.9c0 0-5.6-4-8.8-3.8-5.4 0.4-13.9 8.7-13.9 8.7 0 0 8.3-8.4 8.7-13.9 0.2-3.2-3.8-8.8-3.8-8.8 0 0 5.2 4.2 8.3 4.3 3.6 0.1 9.9-4.7 9.9-4.7 0 0-4.7 6.2-4.7 9.9 0.1 3.1 4.3 8.3 4.3 8.3zM115 95.4c0 0-4 5.6-3.8 8.8 0.4 5.4 8.7 13.9 8.7 13.9 0 0-8.4-8.3-13.9-8.7-3.2-0.2-8.8 3.8-8.8 3.8 0 0 4.2-5.2 4.3-8.3 0.1-3.6-4.7-9.9-4.7-9.9 0 0 6.2 4.7 9.9 4.7 3.1-0.1 8.3-4.3 8.3-4.3zM97.2 36.5c0 0 5.6 4 8.8 3.8 5.4-0.4 13.9-8.7 13.9-8.7 0 0-8.3 8.4-8.7 13.9-0.2 3.2 3.8 8.8 3.8 8.8 0 0-5.2-4.2-8.3-4.3-3.6-0.1-9.9 4.7-9.9 4.7 0 0 4.7-6.2 4.7-9.9-0.1-3.1-4.3-8.3-4.3-8.3zM76.9 14.5c0 0 4.9 32.1 15.5 43 10.9 11.2 43.7 17 43.7 17 0 0-32.8 6.7-43.7 18-10.4 10.7-15.5 42-15.5 42 0 0-6.1-31.2-16.6-42C49.5 81.5 17.6 74.5 17.6 74.5c0 0 31.9-6.1 42.6-17C71.1 46.6 76.9 14.5 76.9 14.5Z" />
         </svg>
     </div>
-    <div class="blending-curtain" id="blending-curtain" onclick="toggleMenu()">
+    <div class="blending-curtain hide" id="blending-curtain" onclick="toggleMenu()">
         <ul class="menu">
             <li><a href="./edit-character.html">Edytuj postać</a></li>
             <li><a href="./Iskra - Gra Fabularna v 0.5.pdf">Zasady</a></li>
             <li><a href="./characters-list.html">Powrót do listy</a></li>
         </ul>
+    </div>
+
+    <div class="roll-container hide" id="roll-container">
+        <p id="roll-result"></p>
+        <button onclick="hideRollContainer()">X</button>
     </div>
 
     <div class="main-container">
@@ -45,22 +50,37 @@
                         <tr>
                             <th class="displayed-attribute-label">Siła</th>
                             <td class="displayed-attribute" id="displayed-attribute-strength"></td>
+                            <td class="roll">
+                                <button onclick="diceRoll('displayed-attribute-strength')">Test</button>
+                            </td>
                         </tr>
                         <tr>
                             <th class="displayed-attribute-label">Zręczność</th>
                             <td class="displayed-attribute" id="displayed-attribute-dexterity"></td>
+                            <td class="roll">
+                                <button onclick="diceRoll('displayed-attribute-dexterity')">Test</button>
+                            </td>
                         </tr>
                         <tr>
                             <th class="displayed-attribute-label">Wytrzymałość</th>
                             <td class="displayed-attribute" id="displayed-attribute-constitution"></td>
+                            <td class="roll">
+                                <button onclick="diceRoll('displayed-attribute-constitution')">Test</button>
+                            </td>
                         </tr>
                         <tr>
                             <th class="displayed-attribute-label">Intelekt</th>
                             <td class="displayed-attribute" id="displayed-attribute-intellect"></td>
+                            <td class="roll">
+                                <button onclick="diceRoll('displayed-attribute-intellect')">Test</button>
+                            </td>
                         </tr>
                         <tr>
                             <th class="displayed-attribute-label">Charyzma</th>
                             <td class="displayed-attribute" id="displayed-attribute-charisma"></td>
+                            <td class="roll">
+                                <button onclick="diceRoll('displayed-attribute-charisma')">Test</button>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -69,7 +89,7 @@
                     <table class="table-attrs-stats">
                         <tr>
                             <th><label for="focus-points-container">Punkty skupienia</label></th>
-                            <td><input type="number" name="focus-points-container" id="focus-points-container" min="0"
+                            <td><input type="number" name="focus-points-container" id="focus-points-container" onchange="changeFocusPoints()" min="0"
                                     value="0"></td>
                         </tr>
                         <tr>
@@ -83,7 +103,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <th><label for="damage-container">Obrażenia</label></th>
+                            <th><label for="damage-container">Zadawane obrażenia</label></th>
                             <td><input type="number" name="damage-container" id="damage-container" min="1" value="1">
                             </td>
                         </tr>

@@ -86,8 +86,24 @@ const changeHealth = () => {
     localStorage.setItem(characterKey, JSON.stringify(characterInfo));
 }
 
+const changeFocusPoints = () => {
+    characterInfo.focusPoints = parseInt(document.getElementById('focus-points-container').value);
+    localStorage.setItem(characterKey, JSON.stringify(characterInfo));
+}
+
+const hideRollContainer = () => document.getElementById('roll-container').classList.add('hide');
+
+const diceRoll = (targetId) => {
+    let rollContainer = document.getElementById('roll-result');
+    let targetValue =  parseInt(document.getElementById(targetId).innerText);
+    let result = 2 + Math.floor(Math.random()*6) + Math.floor(Math.random()*6);
+    rollContainer.innerText = result + targetValue;
+    
+    document.getElementById('roll-container').classList.remove('hide');
+}
+
 const toggleMenu = () => {
-    document.getElementById('blending-curtain').classList.toggle('show');
+    document.getElementById('blending-curtain').classList.toggle('hide');
 }
 
 loadCharacterInfo();
