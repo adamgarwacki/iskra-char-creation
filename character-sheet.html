@@ -13,17 +13,17 @@
 <!--  onload="loadCharacterInfo()" -->
 
 <body>
-    <div class="menu-icon" id="menu-icon" onclick="showMenu()">
+    <div class="menu-icon" id="menu-icon" onclick="toggleMenu()">
         <svg viewBox="0 0 150 150">
             <path
                 d="m39.2 54.2c0 0 4-5.6 3.8-8.8-0.4-5.4-8.7-13.9-8.7-13.9 0 0 8.4 8.3 13.9 8.7 3.2 0.2 8.8-3.8 8.8-3.8 0 0-4.2 5.2-4.3 8.3-0.1 3.6 4.7 9.9 4.7 9.9 0 0-6.2-4.7-9.9-4.7-3.1 0.1-8.3 4.3-8.3 4.3zm17.8 58.9c0 0-5.6-4-8.8-3.8-5.4 0.4-13.9 8.7-13.9 8.7 0 0 8.3-8.4 8.7-13.9 0.2-3.2-3.8-8.8-3.8-8.8 0 0 5.2 4.2 8.3 4.3 3.6 0.1 9.9-4.7 9.9-4.7 0 0-4.7 6.2-4.7 9.9 0.1 3.1 4.3 8.3 4.3 8.3zM115 95.4c0 0-4 5.6-3.8 8.8 0.4 5.4 8.7 13.9 8.7 13.9 0 0-8.4-8.3-13.9-8.7-3.2-0.2-8.8 3.8-8.8 3.8 0 0 4.2-5.2 4.3-8.3 0.1-3.6-4.7-9.9-4.7-9.9 0 0 6.2 4.7 9.9 4.7 3.1-0.1 8.3-4.3 8.3-4.3zM97.2 36.5c0 0 5.6 4 8.8 3.8 5.4-0.4 13.9-8.7 13.9-8.7 0 0-8.3 8.4-8.7 13.9-0.2 3.2 3.8 8.8 3.8 8.8 0 0-5.2-4.2-8.3-4.3-3.6-0.1-9.9 4.7-9.9 4.7 0 0 4.7-6.2 4.7-9.9-0.1-3.1-4.3-8.3-4.3-8.3zM76.9 14.5c0 0 4.9 32.1 15.5 43 10.9 11.2 43.7 17 43.7 17 0 0-32.8 6.7-43.7 18-10.4 10.7-15.5 42-15.5 42 0 0-6.1-31.2-16.6-42C49.5 81.5 17.6 74.5 17.6 74.5c0 0 31.9-6.1 42.6-17C71.1 46.6 76.9 14.5 76.9 14.5Z" />
         </svg>
     </div>
-    <div class="blending-curtain" id="blending-curtain" onclick="showMenu()">
+    <div class="blending-curtain" id="blending-curtain" onclick="toggleMenu()">
         <ul class="menu">
-            <li><a href="">Opcja 1</a></li>
-            <li><a href="">Opcja 2</a></li>
-            <li><a href="./characters-list.html">Wróc do listy</a></li>
+            <li><a href="./edit-character.html">Edytuj postać</a></li>
+            <li><a href="./Iskra - Gra Fabularna v 0.5.pdf">Zasady</a></li>
+            <li><a href="./characters-list.html">Powrót do listy</a></li>
         </ul>
     </div>
 
@@ -89,6 +89,14 @@
                         </tr>
                     </table>
                 </div>
+            </div>
+        </section>
+
+        <section class="main-component character-health">
+            <h2>Zdrowie i statusy</h2>
+            <div>
+                <label for="health-container">Zdrowie</label>
+                <input type="number" name="health-container" id="health-container" min="0" max="5" onchange="changeHealth()">
             </div>
         </section>
 

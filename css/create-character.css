@@ -30,7 +30,7 @@ fieldset div {
 }
 
 .wrong-number {
-    background-color: red;
+    background-color: #ff6f6f;
 }
 
 .attributes > div > input[type="number"] {

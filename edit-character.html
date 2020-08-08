@@ -12,7 +12,7 @@
 
 <body>
     <!-- onload="createCharKey()" -->
-    <form class="main-container" onsubmit="saveCharacter(event)">
+    <form class="main-container" onsubmit="saveChanges(event)">
         <fieldset class="name-concept input-grouping-element">
             <label for="name">Imię:</label>
             <input type="text" name="name" class="input-value" id="name" autocomplete="off" required>
@@ -22,44 +22,38 @@
         </fieldset>
 
         <fieldset class="attributes input-grouping-element">
-            <div class="available-points-container" id="available-points-container">
-                <label for="available-attribute-points">Dostępne punkty:</label>
-                <input type="number" name="available-attribute-points" id="available-attribute-points" value="7"
-                    readonly>
-            </div>
-
             <div>
                 <label for="attribute-strength">Siła</label>
                 <input type="number" name="attribute-strength" class="input-value character-attribute"
-                    id="attribute-strength" onchange="changeAttrValue('attribute-strength')" min="-4" max="4"
+                    id="attribute-strength" min="-4" max="4"
                     value="-2">
             </div>
 
             <div>
                 <label for="attribute-dexterity">Zręczność</label>
                 <input type="number" name="attribute-dexterity" class="input-value character-attribute"
-                    onchange="changeAttrValue('attribute-dexterity')" id="attribute-dexterity" min="-4" max="4"
+                   id="attribute-dexterity" min="-4" max="4"
                     value="-2">
             </div>
 
             <div>
                 <label for="attribute-constitution">Wytrzymałość</label>
                 <input type="number" name="attribute-constitution" class="input-value character-attribute"
-                    onchange="changeAttrValue('attribute-constitution')" id="attribute-constitution" min="-4" max="4"
+                    id="attribute-constitution" min="-4" max="4"
                     value="-2">
             </div>
 
             <div>
                 <label for="attribute-intellect">Intelekt</label>
                 <input type="number" name="attribute-intellect" class="input-value character-attribute"
-                    onchange="changeAttrValue('attribute-intellect')" id="attribute-intellect" min="-4" max="4"
+                    id="attribute-intellect" min="-4" max="4"
                     value="-2">
             </div>
 
             <div>
                 <label for="attribute-charisma">Charyzma</label>
                 <input type="number" name="attribute-charisma" class="input-value character-attribute"
-                    onchange="changeAttrValue('attribute-charisma')" id="attribute-charisma" min="-4" max="4"
+                    id="attribute-charisma" min="-4" max="4"
                     value="-2">
             </div>
         </fieldset>
@@ -170,7 +164,7 @@
     </form>
 
     <script src="js/add-ability-item.js"></script>
-    <script src="js/createChar.js"></script>
+    <script src="js/editCharacter.js"></script>
 </body>
 
 </html>

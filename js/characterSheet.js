@@ -1,11 +1,11 @@
 'use strict';
 
-let characterInfo;
+// let characterInfo;
+let characterKey = sessionStorage.getItem('displayedChar');
+let characterInfo = JSON.parse(localStorage.getItem(characterKey));
 
 const loadCharacterInfo = () => {
-    let characterKey = sessionStorage.getItem('displayedChar');
-    characterInfo = JSON.parse(localStorage.getItem(characterKey));
-    console.log(characterInfo);
+    // console.log(characterInfo);
 
     document.getElementById('character-name').innerText = characterInfo.charName;
     document.getElementById('character-concept').innerText = characterInfo.charConcept;
@@ -19,19 +19,21 @@ const loadCharacterInfo = () => {
     let focusPointsContainer = document.getElementById('focus-points-container');
     focusPointsContainer.value = characterInfo.focusPoints;
 
+    let healthContainer = document.getElementById('health-container');
+    healthContainer.value = characterInfo.charHealth;
 
     let characterAbilitiesContainer = document.getElementById('table-abilities');
 
-    Object.entries(characterInfo.charAbilities).forEach(ability => {
+    Object.values(characterInfo.charAbilities).forEach(ability => {
         
         let abilityEntry = document.createElement('tr');
         let abilityName = document.createElement('td');
         let abilityCost = document.createElement('td');
         let abilityDescription = document.createElement('td');
 
-        abilityName.innerText = ability[1]['ability-name'];
-        abilityCost.innerText = ability[1]['ability-cost'];
-        abilityDescription.innerText = ability[1]['ability-description'];
+        abilityName.innerText = ability['ability-name'];
+        abilityCost.innerText = ability['ability-cost'];
+        abilityDescription.innerText = ability['ability-description'];
 
         abilityEntry.appendChild(abilityName);
         abilityEntry.appendChild(abilityCost);
@@ -45,7 +47,7 @@ const loadCharacterInfo = () => {
     let equipmentContainer = document.getElementById('table-equipment');
     // console.log(equipmentContainer);
 
-    Object.entries(characterInfo.charEquipment).forEach(item => {
+    Object.values(characterInfo.charEquipment).forEach(item => {
         let itemEntry = document.createElement('tr');
         let itemName = document.createElement('td');
         let itemDefense = document.createElement('td');
@@ -55,17 +57,17 @@ const loadCharacterInfo = () => {
         let itemDescription = document.createElement('td');
         let itemQuantity = document.createElement('td');
 
-        itemName.innerText = item[1]['item-name'];
-        itemDefense.innerText = item[1]['item-defense'];
-        if (item[1]['item-attack-attribute'] != 'Brak') {
-            itemAttack.innerText = `${item[1]['item-attack-attribute']} ${item[1]['item-attack-modifier']}`;
+        itemName.innerText = item['item-name'];
+        itemDefense.innerText = item['item-defense'];
+        if (item['item-attack-attribute'] != 'Brak') {
+            itemAttack.innerText = `${item['item-attack-attribute']} ${item['item-attack-modifier']}`;
         } else {
             itemAttack.innerText = `---`;
         }
-        itemDamage.innerText = item[1]['item-damage'];
-        itemDurability.innerText = item[1]['item-durability'];
-        itemDescription.innerText = item[1]['item-description'];
-        itemQuantity.innerText = item[1]['item-quantity'];
+        itemDamage.innerText = item['item-damage'];
+        itemDurability.innerText = item['item-durability'];
+        itemDescription.innerText = item['item-description'];
+        itemQuantity.innerText = item['item-quantity'];
 
         itemEntry.appendChild(itemName);
         itemEntry.appendChild(itemDefense);
@@ -79,7 +81,12 @@ const loadCharacterInfo = () => {
     });
 }
 
-const showMenu = () => {
+const changeHealth = () => {
+    characterInfo.charHealth = parseInt(document.getElementById('health-container').value);
+    localStorage.setItem(characterKey, JSON.stringify(characterInfo));
+}
+
+const toggleMenu = () => {
     document.getElementById('blending-curtain').classList.toggle('show');
 }
 
