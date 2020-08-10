@@ -54,9 +54,10 @@ const saveCharacter = (event) => {
         charName:charName,
         charConcept:charConcept,
         charHealth:5,
-        focusPoints:0,
+        focusPoints:[0,0],
         charAttributes:allAttrValues,
         charEquipment:characterEquipment,
+        charEquipmentWorn:[],
         charAbilities:characterAbilities
     }
 

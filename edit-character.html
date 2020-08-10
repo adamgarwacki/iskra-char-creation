@@ -23,38 +23,40 @@
 
         <fieldset class="attributes input-grouping-element">
             <div>
-                <label for="attribute-strength">Siła</label>
-                <input type="number" name="attribute-strength" class="input-value character-attribute"
-                    id="attribute-strength" min="-4" max="4"
-                    value="-2">
+                <div>
+                    <label for="attribute-strength">Siła</label>
+                    <input type="number" name="attribute-strength" class="input-value character-attribute"
+                        id="attribute-strength" min="-4" max="4" value="-2">
+                </div>
+
+                <div>
+                    <label for="attribute-dexterity">Zręczność</label>
+                    <input type="number" name="attribute-dexterity" class="input-value character-attribute"
+                        id="attribute-dexterity" min="-4" max="4" value="-2">
+                </div>
+
+                <div>
+                    <label for="attribute-constitution">Wytrzymałość</label>
+                    <input type="number" name="attribute-constitution" class="input-value character-attribute"
+                        id="attribute-constitution" min="-4" max="4" value="-2">
+                </div>
+
+                <div>
+                    <label for="attribute-intellect">Intelekt</label>
+                    <input type="number" name="attribute-intellect" class="input-value character-attribute"
+                        id="attribute-intellect" min="-4" max="4" value="-2">
+                </div>
+
+                <div>
+                    <label for="attribute-charisma">Charyzma</label>
+                    <input type="number" name="attribute-charisma" class="input-value character-attribute"
+                        id="attribute-charisma" min="-4" max="4" value="-2">
+                </div>
             </div>
 
             <div>
-                <label for="attribute-dexterity">Zręczność</label>
-                <input type="number" name="attribute-dexterity" class="input-value character-attribute"
-                   id="attribute-dexterity" min="-4" max="4"
-                    value="-2">
-            </div>
-
-            <div>
-                <label for="attribute-constitution">Wytrzymałość</label>
-                <input type="number" name="attribute-constitution" class="input-value character-attribute"
-                    id="attribute-constitution" min="-4" max="4"
-                    value="-2">
-            </div>
-
-            <div>
-                <label for="attribute-intellect">Intelekt</label>
-                <input type="number" name="attribute-intellect" class="input-value character-attribute"
-                    id="attribute-intellect" min="-4" max="4"
-                    value="-2">
-            </div>
-
-            <div>
-                <label for="attribute-charisma">Charyzma</label>
-                <input type="number" name="attribute-charisma" class="input-value character-attribute"
-                    id="attribute-charisma" min="-4" max="4"
-                    value="-2">
+                <label for="focus-points-modifier">Modyfikator PS:</label>
+                <input type="number" name="focus-points-modifier" id="focus-points-modifier" min="0" value="0">
             </div>
         </fieldset>
 
@@ -87,27 +89,26 @@
                 </select>
             </div>
 
-                <div>
-                    <label for="item-defense">Modyfikator obrony:</label>
-                    <input type="number" name="item-defense" id="item-defense" class="item-field" min="0" value="0">
-                </div>
-                <div>
-                    <label for="item-attack-modifier">Atrybut ataku / Modyfikator ataku:</label>
-                    <input type="number" name="item-attack-modifier" id="item-attack-modifier" class="item-field"
-                        value="0">
-                    <select name="item-attack-attribute" id="item-attack-attribute" class="item-field">
-                        <option value="Brak" selected>Brak</option>
-                        <option value="Siła">Siła</option>
-                        <option value="Zręczność">Zręczność</option>
-                        <option value="Wytrzymałość">Wytrzymałość</option>
-                        <option value="Intelekt">Intelekt</option>
-                        <option value="Charyzma">Charyzma</option>
-                    </select>
-                </div>
-                <div>
-                    <label for="item-damage">Obrażenia przedmiotu:</label>
-                    <input type="number" name="item-damage" id="item-damage" class="item-field" min="0" value="0">
-                </div>
+            <div>
+                <label for="item-defense">Modyfikator obrony:</label>
+                <input type="number" name="item-defense" id="item-defense" class="item-field" min="0" value="0">
+            </div>
+            <div>
+                <label for="item-attack-modifier">Atrybut ataku / Modyfikator ataku:</label>
+                <input type="number" name="item-attack-modifier" id="item-attack-modifier" class="item-field" value="0">
+                <select name="item-attack-attribute" id="item-attack-attribute" class="item-field">
+                    <option value="Brak" selected>Brak</option>
+                    <option value="Siła">Siła</option>
+                    <option value="Zręczność">Zręczność</option>
+                    <option value="Wytrzymałość">Wytrzymałość</option>
+                    <option value="Intelekt">Intelekt</option>
+                    <option value="Charyzma">Charyzma</option>
+                </select>
+            </div>
+            <div>
+                <label for="item-damage">Obrażenia przedmiotu:</label>
+                <input type="number" name="item-damage" id="item-damage" class="item-field" min="0" value="0">
+            </div>
             </div>
 
             <div>

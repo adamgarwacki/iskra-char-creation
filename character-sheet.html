@@ -27,7 +27,7 @@
         </ul>
     </div>
 
-    <div class="roll-container hide" id="roll-container">
+    <div class="main-component hide roll-container" id="roll-container">
         <p id="roll-result"></p>
         <button onclick="hideRollContainer()">X</button>
     </div>
@@ -47,40 +47,25 @@
             <div class="character-attrs-stats">
                 <div>
                     <table class="table-attrs-stats">
-                        <tr>
+                        <tr onclick="diceRoll('displayed-attribute-strength')">
                             <th class="displayed-attribute-label">Siła</th>
                             <td class="displayed-attribute" id="displayed-attribute-strength"></td>
-                            <td class="roll">
-                                <button onclick="diceRoll('displayed-attribute-strength')">Test</button>
-                            </td>
                         </tr>
-                        <tr>
+                        <tr onclick="diceRoll('displayed-attribute-dexterity')">
                             <th class="displayed-attribute-label">Zręczność</th>
                             <td class="displayed-attribute" id="displayed-attribute-dexterity"></td>
-                            <td class="roll">
-                                <button onclick="diceRoll('displayed-attribute-dexterity')">Test</button>
-                            </td>
                         </tr>
-                        <tr>
+                        <tr onclick="diceRoll('displayed-attribute-constitution')">
                             <th class="displayed-attribute-label">Wytrzymałość</th>
                             <td class="displayed-attribute" id="displayed-attribute-constitution"></td>
-                            <td class="roll">
-                                <button onclick="diceRoll('displayed-attribute-constitution')">Test</button>
-                            </td>
                         </tr>
-                        <tr>
+                        <tr onclick="diceRoll('displayed-attribute-intellect')">
                             <th class="displayed-attribute-label">Intelekt</th>
                             <td class="displayed-attribute" id="displayed-attribute-intellect"></td>
-                            <td class="roll">
-                                <button onclick="diceRoll('displayed-attribute-intellect')">Test</button>
-                            </td>
                         </tr>
-                        <tr>
+                        <tr onclick="diceRoll('displayed-attribute-charisma')">
                             <th class="displayed-attribute-label">Charyzma</th>
                             <td class="displayed-attribute" id="displayed-attribute-charisma"></td>
-                            <td class="roll">
-                                <button onclick="diceRoll('displayed-attribute-charisma')">Test</button>
-                            </td>
                         </tr>
                     </table>
                 </div>
@@ -88,9 +73,12 @@
                 <div>
                     <table class="table-attrs-stats">
                         <tr>
-                            <th><label for="focus-points-container">Punkty skupienia</label></th>
-                            <td><input type="number" name="focus-points-container" id="focus-points-container" onchange="changeFocusPoints()" min="0"
-                                    value="0"></td>
+                            <th><label for="focus-points-modifier-container">Mod. PS</label></th>
+                            <td name="focus-points-modifier-container" id="focus-points-modifier-container"></td>
+                        </tr>
+                        <tr>
+                            <th><label for="focus-points-container">PS</label></th>
+                            <td><input type="number" name="focus-points-container" id="focus-points-container" onchange="changeFocusPoints()" min="0" value="0"></td>
                         </tr>
                         <tr>
                             <th><label for="defense-container">Obrona</label></th>
@@ -98,12 +86,12 @@
                             </td>
                         </tr>
                         <tr>
-                            <th><label for="attack-mod-container">Modyfikator ataku</label></th>
+                            <th><label for="attack-mod-container">Mod. ataku</label></th>
                             <td><input type="number" name="attack-mod-container" id="attack-mod-container" value="0">
                             </td>
                         </tr>
                         <tr>
-                            <th><label for="damage-container">Zadawane obrażenia</label></th>
+                            <th><label for="damage-container">Obrażenia</label></th>
                             <td><input type="number" name="damage-container" id="damage-container" min="1" value="1">
                             </td>
                         </tr>
@@ -135,6 +123,7 @@
             <h2 class="section-heading">Ekwipunek</h2>
             <table class="table-equipment" id="table-equipment">
                 <tr>
+                    <th>Zał.</th>
                     <th>Nazwa</th>
                     <th>Obrona</th>
                     <th>Atak</th>

@@ -91,6 +91,9 @@ const saveChanges = (event) => {
         allAttrValues.push(element.value);
     }
 
+    let focusPointsModifier = parseInt(document.getElementById('focus-points-modifier').value);
+    editedCharacter.focusPoints[0] = focusPointsModifier;
+
     console.log(characterEquipment);
     console.log(editedCharacter.charEquipment);
 
@@ -98,15 +101,16 @@ const saveChanges = (event) => {
         charName:charName,
         charConcept:charConcept,
         charHealth:editedCharacter.charHealth,
-        focusPoints:0,
+        focusPoints:editedCharacter.focusPoints,
         charAttributes:allAttrValues,
         charEquipment:editedCharacter.charEquipment,
+        charEquipmentWorn:editedCharacter.charEquipmentWorn,
         charAbilities:editedCharacter.charAbilities
     }
 
     localStorage.setItem(editedCharacterKey, JSON.stringify(charObj));
 
-    location.href = "./characters-list.html";
+    location.href = "./character-sheet.html";
 }
 
 getEditedCharacter();
