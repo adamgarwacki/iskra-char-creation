@@ -21,7 +21,6 @@ fieldset {
 .attributes {
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
 }
 
 fieldset div {

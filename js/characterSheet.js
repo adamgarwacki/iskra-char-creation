@@ -42,8 +42,22 @@ const loadCharacterInfo = () => {
         characterAbilitiesContainer.appendChild(abilityEntry);
     });
 
-    let equipmentContainer = document.getElementById('table-equipment');
+    let wornEquipment = characterInfo.charEquipmentWorn;
+    if (wornEquipment.clothing == 0) {
+        document.getElementById('defense-container').innerText = 0;
+    } else {
+        document.getElementById('defense-container').innerText = characterInfo.charEquipment[wornEquipment.clothing]['item-defense'];
+    }
 
+    if (wornEquipment.weapon == 0) {
+        document.getElementById('attack-mod-container').innerText = 0;
+        document.getElementById('damage-container').innerText = 1;
+    } else {
+        document.getElementById('attack-mod-container').innerText = characterInfo.charEquipment[wornEquipment.weapon]['item-attack-modifier'];
+        document.getElementById('damage-container').innerText = characterInfo.charEquipment[wornEquipment.weapon]['item-damage'];
+    }
+
+    let equipmentContainer = document.getElementById('table-equipment');
     Object.entries(characterInfo.charEquipment).forEach(element => {
         let itemKey = element[0];
         let item = element[1];
@@ -58,19 +72,11 @@ const loadCharacterInfo = () => {
         let itemDescription = document.createElement('td');
         let itemQuantity = document.createElement('td');
 
-        // let currentDefenseValue = parseInt(document.getElementById('defense-container').value);
-        // let currentAttackModifier = parseInt(document.getElementById('attack-mod-container').value);
+        /* ZAKŁADANIE */
 
-        if (!characterInfo.charEquipmentWorn.includes(itemKey)) {
-            isWorn.innerText = ' ';
-        } else {
-            let currentDefenseValue = parseInt(document.getElementById('defense-container').value) + parseInt(item['item-defense']);
-            let currentAttackModifier = parseInt(document.getElementById('attack-mod-container').value) + parseInt(item['item-attack-modifier']);
-
-            document.getElementById('defense-container').value = currentDefenseValue;
-            document.getElementById('attack-mod-container').value = currentAttackModifier;
-
-            isWorn.innerText = 'O';
+        let wornKeys = Object.values(wornEquipment);
+        if (wornKeys.includes(itemKey)) {
+            isWorn.innerText = 'X';
         }
 
         itemName.innerText = item['item-name'];
@@ -107,31 +113,51 @@ const toggleWornEquipment = (key) => {
     let currentDefenseValue = parseInt(document.getElementById('defense-container').value);
     let currentAttackModifier = parseInt(document.getElementById('attack-mod-container').value);
 
-    if (!wornEquipment.includes(key)) {
-        wornEquipment.push(key);
+    let itemType = characterInfo.charEquipment[key]['item-type'];
 
-        currentDefenseValue += parseInt(characterInfo.charEquipment[key]['item-defense']);
-        document.getElementById('defense-container').value = currentDefenseValue;
+    switch (itemType) {
+        case 'Ubranie':
+            if (wornEquipment.clothing == key) {
+                wornEquipment.clothing = 0;
+                document.getElementById('defense-container').innerText = 0;
+                document.getElementById(key).firstChild.innerText = '';
+            } else if (wornEquipment.clothing == 0) {
+                wornEquipment.clothing = key;
+                document.getElementById('defense-container').innerText = characterInfo.charEquipment[key]['item-defense'];
+                document.getElementById(key).firstChild.innerText = 'X';
+                document.getElementById('defense-container').innerText = characterInfo.charEquipment[key]['item-defense'];
+            } else {
+                document.getElementById(wornEquipment.clothing).firstChild.innerText = '';
+                wornEquipment.clothing = key;
+                document.getElementById('defense-container').innerText = characterInfo.charEquipment[key]['item-defense'];
+                document.getElementById(key).firstChild.innerText = 'X';
+            }
+            break;
 
-        currentAttackModifier += parseInt(characterInfo.charEquipment[key]['item-attack-modifier']);
-        document.getElementById('attack-mod-container').value = currentAttackModifier;
+        case 'Broń':
+            if (wornEquipment.weapon == key) {
+                wornEquipment.weapon = 0;
+                document.getElementById('attack-mod-container').innerText = 0;
+                document.getElementById('damage-container').innerText = 1;
+                document.getElementById(key).firstChild.innerText = '';
+            } else if (wornEquipment.weapon == 0) {
+                wornEquipment.weapon = key;
+                document.getElementById('attack-mod-container').innerText = characterInfo.charEquipment[key]['item-attack-modifier'];
+                document.getElementById('damage-container').innerText = characterInfo.charEquipment[key]['item-damage'];
+                document.getElementById(key).firstChild.innerText = 'X';
+            } else {
+                document.getElementById(wornEquipment.weapon).firstChild.innerText = '';
+                wornEquipment.weapon = key;
+                document.getElementById('attack-mod-container').innerText = characterInfo.charEquipment[key]['item-attack-modifier'];
+                document.getElementById('damage-container').innerText = characterInfo.charEquipment[key]['item-damage'];
+                document.getElementById(key).firstChild.innerText = 'X';
+            }
+            break;
 
-
-        document.getElementById(key).firstChild.innerText = 'O';
-    } else {
-        let newWornEquipment = wornEquipment.filter(e => e != key);
-        wornEquipment = newWornEquipment;
-
-        currentDefenseValue -= parseInt(characterInfo.charEquipment[key]['item-defense']);
-        document.getElementById('defense-container').value = currentDefenseValue;
-
-        currentAttackModifier -= parseInt(characterInfo.charEquipment[key]['item-attack-modifier']);
-        document.getElementById('attack-mod-container').value = currentAttackModifier;
-
-        document.getElementById(key).firstChild.innerText = ' ';
+        default:
+            break;
     }
-
-    characterInfo.charEquipmentWorn = wornEquipment;
+    
     localStorage.setItem(characterKey, JSON.stringify(characterInfo));
 }
 
