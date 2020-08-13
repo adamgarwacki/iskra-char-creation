@@ -1,20 +1,36 @@
 'use strict';
 
+// console.log('dzyń');
+
+// let characterKeyList = [1597312204542, 1597312290677];
+// localStorage.setItem('charKeyList', JSON.stringify(characterKeyList));
+
+const deleteCharacter = (key) => {
+
+    // console.log(characterKeyList.indexOf(1597311509295));
+    let charName = JSON.parse(localStorage.getItem(key)).charName;
+    let confirmMessage = confirm(`Czy na pewno chcesz usunąć tę postać? (${charName})`);
+    if (confirmMessage) {
+        localStorage.removeItem(key);
+        let characterKeyList = JSON.parse(localStorage.getItem('charKeyList'));
+        let index = characterKeyList.indexOf(key);
+        console.log(key);
+    
+        characterKeyList.splice(index, 1);
+        console.log(characterKeyList);
+        localStorage.setItem('charKeyList', JSON.stringify(characterKeyList));
+        location.reload();
+    }
+}
+
 const loadChars = () => {
     if (!localStorage.charKeyList) {
-        // console.log('działa');
         localStorage.setItem('charKeyList', JSON.stringify([]));
 
     } else {
 
         let allKeys = JSON.parse(localStorage.getItem('charKeyList'));
         allKeys.forEach(key => {
-
-            
-
-            // console.log(Date.now());
-
-            // zamiast imienia postaci niechg id będzie unikalnym kodem!!! data na przykład ...?
 
             let charInfo = JSON.parse(localStorage.getItem(key));
 
@@ -29,48 +45,27 @@ const loadChars = () => {
             }
 
             let charNameContainer = document.createElement('div');
-            charNameContainer.setAttribute('class', 'character-name-container');
+            charNameContainer.classList.add('character-name-container');
             charNameContainer.setAttribute('id', key);
             charNameEntry.setAttribute('href', './character-sheet.html');
-            charNameEntry.setAttribute('onclick', `sessionStorage.setItem("displayedChar", "${key}")`);
+            charNameEntry.onclick = () => sessionStorage.setItem("displayedChar", key);
+            // charNameEntry.setAttribute('onclick', `sessionStorage.setItem("displayedChar", "${key}")`);
+            let deleteCharButton = document.createElement('button');
+            deleteCharButton.innerText = 'Usuń postać';
+            deleteCharButton.onclick = () => deleteCharacter(key);
+
+
             charNameContainer.appendChild(charNameEntry);
             charNameContainer.appendChild(charConceptEntry);
+            charNameContainer.appendChild(deleteCharButton);
 
             document.getElementById('created-characters').prepend(charNameContainer);
         })
     }
-    
-    // console.log('dzyń');
-    // let pathToJSON = window.location.pathname.split('/');
-    // pathToJSON[pathToJSON.length - 1] = 'data/items.json';
-    // console.log(pathToJSON.join('/'));
-
-    // console.log(itemList);
-    // window.open(pathToJSON);
-
-    
-    // let response = fetch(pathToJSON);
-    // let allOfMyData = response.json();
-    // console.log(allOfMyData);
-
-    // let itemsJSONFile = new XMLHttpRequest();
-
-    // itemsJSONFile.open('GET', pathToJSON);
-    // itemsJSONFile.send();
-    // console.log(itemsJSONFile);
-
-
-
-
-    // let allKeys = Object.keys(localStorage);
-
-
-    // if (localStorage.charList.value != undefined) {
-    //     console.log('dzyń');
-
-
-
-    // }
 }
 
-// localStorage.setItem("displayed-char", `${key}`)
+const deleteData = () => {
+    console.log('usunięto');
+}
+
+loadChars();

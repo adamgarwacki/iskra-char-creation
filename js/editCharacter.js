@@ -94,8 +94,8 @@ const saveChanges = (event) => {
     let focusPointsModifier = parseInt(document.getElementById('focus-points-modifier').value);
     editedCharacter.focusPoints[0] = focusPointsModifier;
 
-    console.log(characterEquipment);
-    console.log(editedCharacter.charEquipment);
+    // console.log(characterEquipment);
+    // console.log(editedCharacter.charEquipment);
 
     let charObj = {
         charName:charName,
