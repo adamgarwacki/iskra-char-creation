@@ -63,13 +63,7 @@ const saveCharacter = (event) => {
         },
         charAbilities:characterAbilities
     }
-
-    // charKey = Date.now();
     let charKey = Date.now();
-    let charKeyList = JSON.parse(localStorage.getItem('charKeyList'));
-    charKeyList.push(charKey);
-    localStorage.setItem('charKeyList', JSON.stringify(charKeyList));
-
     localStorage.setItem(charKey, JSON.stringify(charObj));
 
     location.href = "./characters-list.html";

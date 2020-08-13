@@ -75,8 +75,12 @@ const loadCharacterInfo = () => {
         /* ZAKŁADANIE */
 
         let wornKeys = Object.values(wornEquipment);
-        if (wornKeys.includes(itemKey)) {
-            isWorn.innerText = 'X';
+        if (item['item-type'] === 'Ubranie' || item['item-type'] === 'Broń') {
+            if (wornKeys.includes(itemKey)) {
+                isWorn.innerText = 'X';
+            }
+        } else {
+            isWorn.innerText = '---';
         }
 
         itemName.innerText = item['item-name'];
