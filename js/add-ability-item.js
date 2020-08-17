@@ -14,8 +14,8 @@ const addNewItem = () => {
     }
 
     let allItemFields = document.getElementsByClassName('item-field');
-    for (let itemElem of allItemFields) {
-        allItemValues[itemElem.name] = itemElem.value;
+    for (let itemProp of allItemFields) {
+        allItemValues[itemProp.name] = itemProp.value;
     }
     
     let itemKey = Date.now();

@@ -2,7 +2,6 @@
 
 let editedCharacterKey = JSON.parse(sessionStorage.getItem('displayedChar'));
 let editedCharacter = JSON.parse(localStorage[JSON.parse(sessionStorage.getItem('displayedChar'))]);
-// console.log(editedCharacterKey);
 let characterEquipment = editedCharacter.charEquipment;
 let characterAbilities = editedCharacter.charAbilities;
 

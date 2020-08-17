@@ -1,4 +1,4 @@
-
+/* ROLL CONTAINER */
 
 .roll-container {
     position: fixed;
@@ -67,7 +67,7 @@ th {
 }
 
 th, td {
-    padding: 2px 0px;
+    padding: 1px;
 }
 
 .table-attrs-stats tr {
@@ -90,16 +90,4 @@ th, td {
 
 .table-equipment tr {
     cursor: pointer;
-}
-
-.table-equipment th:nth-child(2) {
-    width: 15%;
-}
-
-.table-equipment th:nth-child(7) {
-    width: 30%;
-}
-
-.hide {
-    display: none;
 }

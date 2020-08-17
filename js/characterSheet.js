@@ -114,9 +114,6 @@ const loadCharacterInfo = () => {
 const toggleWornEquipment = (key) => {
     let wornEquipment = characterInfo.charEquipmentWorn;
 
-    let currentDefenseValue = parseInt(document.getElementById('defense-container').value);
-    let currentAttackModifier = parseInt(document.getElementById('attack-mod-container').value);
-
     let itemType = characterInfo.charEquipment[key]['item-type'];
 
     switch (itemType) {
@@ -212,9 +209,5 @@ const diceRoll = (targetId) => {
     rollContainer.innerHTML = `<span>Wynik: ${result}</span><br>${resultDetails}`;
     document.getElementById('roll-container').classList.remove('hide');
 }
-
-const toggleMenu = () => document.getElementById('blending-curtain').classList.toggle('hide');
-
-
 
 loadCharacterInfo();
