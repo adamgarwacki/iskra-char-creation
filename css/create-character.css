@@ -29,10 +29,6 @@ fieldset div {
     text-align: center;
 }
 
-.wrong-number {
-    background-color: #ff6f6f;
-}
-
 .attributes input[type="number"] {
     display: inline-block;
     width: 50px;

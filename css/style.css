@@ -1,5 +1,6 @@
 * {
     margin: 0px;
+    font-family: Didot, serif;
 }
 
 a {
@@ -75,6 +76,16 @@ body {
     margin: auto;
     padding: 16px;
     text-align: center;
+}
+
+input[type='number']::-webkit-inner-spin-button, 
+input[type='number']::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.wrong-number {
+    background-color: #ff6f6f;
 }
 
 .hide {

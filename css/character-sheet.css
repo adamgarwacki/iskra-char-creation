@@ -2,13 +2,13 @@
 
 .roll-container {
     position: fixed;
+    box-sizing: border-box;
+    padding: 40px 0px;
     bottom: 25px;
     right: 25px;
     width: 200px;
     height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    border: 1px solid #e0e0e0;
 }
 
 .roll-container button {
@@ -18,6 +18,7 @@
 }
 
 .roll-container p {
+    height: 70px;
     text-align: center;
     font-size: 1.2rem;
 }
@@ -52,7 +53,8 @@
     height: 250px;
 }
 
-input[type="number"] {
+.character-attrs-stats input[type="number"],
+.character-health input[type="number"] {
     width: 64px;
     font-size: 24px;
     text-align: center;
@@ -66,11 +68,15 @@ th {
     border: 1px solid #e0e0e0;
 }
 
+td {
+    cursor: pointer;
+}
+
 th, td {
     padding: 1px;
 }
 
-.table-attrs-stats tr {
+.table-attrs-stats td {
     cursor: pointer;
 }
 
@@ -88,6 +94,12 @@ th, td {
     width: 20%;
 }
 
-.table-equipment tr {
-    cursor: pointer;
+.table-equipment input {
+    width: 24px;
+    text-align: center;
+}
+
+.character-notes {
+    width: 80%;
+    resize: vertical;
 }

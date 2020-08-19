@@ -103,8 +103,9 @@ const saveChanges = (event) => {
         focusPoints:editedCharacter.focusPoints,
         charAttributes:allAttrValues,
         charEquipment:editedCharacter.charEquipment,
-        charEquipmentWorn:editedCharacter.charEquipmentWorn,
-        charAbilities:editedCharacter.charAbilities
+        charEquipmentWorn:{clothing:0,weapon:0},
+        charAbilities:editedCharacter.charAbilities,
+        charNotes:editedCharacter.charNotes
     }
 
     localStorage.setItem(editedCharacterKey, JSON.stringify(charObj));

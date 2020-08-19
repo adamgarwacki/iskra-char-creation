@@ -25,7 +25,7 @@
         </ul>
     </div>
 
-    <div class="main-component hide roll-container" id="roll-container">
+    <div class="roll-container hide" id="roll-container">
         <p id="roll-result"></p>
         <button onclick="hideRollContainer()">X</button>
     </div>
@@ -134,6 +134,12 @@
                     <th>Ilość</th>
                 </tr>
             </table>
+        </section>
+
+        <section class="main-component character-notes-container">
+            <h2 class="section-heading">Notatki</h2>
+            <textarea class="character-notes" id="character-notes" spellcheck="false"></textarea><br>
+            <button class="save-notes" id="save-notes" onclick="saveCharacterNotes()">Zapisz</button>
         </section>
     </div>
 

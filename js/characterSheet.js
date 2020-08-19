@@ -68,11 +68,14 @@ const loadCharacterInfo = () => {
         let itemDefense = document.createElement('td');
         let itemAttack = document.createElement('td');
         let itemDamage = document.createElement('td');
-        let itemDurability = document.createElement('td');
+        let itemDurability = document.createElement('input');
+        let itemDurabilityTd = document.createElement('td');
         let itemDescription = document.createElement('td');
         let itemQuantity = document.createElement('td');
 
         /* ZAKŁADANIE */
+
+        isWorn.onclick = () => toggleWornEquipment(itemKey);
 
         let wornKeys = Object.values(wornEquipment);
         if (item['item-type'] === 'Ubranie' || item['item-type'] === 'Broń') {
@@ -91,7 +94,17 @@ const loadCharacterInfo = () => {
             itemAttack.innerText = `---`;
         }
         itemDamage.innerText = item['item-damage'];
-        itemDurability.innerText = item['item-durability'];
+
+        itemDurability.type = 'number';
+        itemDurability.value = item['item-durability'];
+        itemDurability.id = `item-dur-${itemKey}`;
+        itemDurability.onchange = () => {changeDurability(itemKey)}
+        itemDurability.setAttribute('min', 0);
+        itemDurability.setAttribute('max', item['item-durability']);
+        itemDurabilityTd.appendChild(itemDurability);
+
+        
+        
         itemDescription.innerText = item['item-description'];
         itemQuantity.innerText = item['item-quantity'];
 
@@ -100,14 +113,15 @@ const loadCharacterInfo = () => {
         itemEntry.appendChild(itemDefense);
         itemEntry.appendChild(itemAttack);
         itemEntry.appendChild(itemDamage);
-        itemEntry.appendChild(itemDurability);
+        itemEntry.appendChild(itemDurabilityTd);
         itemEntry.appendChild(itemDescription);
         itemEntry.appendChild(itemQuantity);
-        itemEntry.id = `${itemKey}`;
-        itemEntry.onclick = () => toggleWornEquipment(itemKey);
+        itemEntry.id = `item-entry-${itemKey}`;
 
         equipmentContainer.appendChild(itemEntry);
     });
+
+    document.getElementById('character-notes').value = characterInfo.charNotes;
 }
 
 
@@ -121,17 +135,17 @@ const toggleWornEquipment = (key) => {
             if (wornEquipment.clothing == key) {
                 wornEquipment.clothing = 0;
                 document.getElementById('defense-container').innerText = 0;
-                document.getElementById(key).firstChild.innerText = '';
+                document.getElementById(`item-entry-${key}`).firstChild.innerText = '';
             } else if (wornEquipment.clothing == 0) {
                 wornEquipment.clothing = key;
                 document.getElementById('defense-container').innerText = characterInfo.charEquipment[key]['item-defense'];
-                document.getElementById(key).firstChild.innerText = 'X';
+                document.getElementById(`item-entry-${key}`).firstChild.innerText = 'X';
                 document.getElementById('defense-container').innerText = characterInfo.charEquipment[key]['item-defense'];
             } else {
                 document.getElementById(wornEquipment.clothing).firstChild.innerText = '';
                 wornEquipment.clothing = key;
                 document.getElementById('defense-container').innerText = characterInfo.charEquipment[key]['item-defense'];
-                document.getElementById(key).firstChild.innerText = 'X';
+                document.getElementById(`item-entry-${key}`).firstChild.innerText = 'X';
             }
             break;
 
@@ -140,18 +154,18 @@ const toggleWornEquipment = (key) => {
                 wornEquipment.weapon = 0;
                 document.getElementById('attack-mod-container').innerText = 0;
                 document.getElementById('damage-container').innerText = 1;
-                document.getElementById(key).firstChild.innerText = '';
+                document.getElementById(`item-entry-${key}`).firstChild.innerText = '';
             } else if (wornEquipment.weapon == 0) {
                 wornEquipment.weapon = key;
                 document.getElementById('attack-mod-container').innerText = characterInfo.charEquipment[key]['item-attack-modifier'];
                 document.getElementById('damage-container').innerText = characterInfo.charEquipment[key]['item-damage'];
-                document.getElementById(key).firstChild.innerText = 'X';
+                document.getElementById(`item-entry-${key}`).firstChild.innerText = 'X';
             } else {
                 document.getElementById(wornEquipment.weapon).firstChild.innerText = '';
                 wornEquipment.weapon = key;
                 document.getElementById('attack-mod-container').innerText = characterInfo.charEquipment[key]['item-attack-modifier'];
                 document.getElementById('damage-container').innerText = characterInfo.charEquipment[key]['item-damage'];
-                document.getElementById(key).firstChild.innerText = 'X';
+                document.getElementById(`item-entry-${key}`).firstChild.innerText = 'X';
             }
             break;
 
@@ -159,6 +173,18 @@ const toggleWornEquipment = (key) => {
             break;
     }
     
+    localStorage.setItem(characterKey, JSON.stringify(characterInfo));
+}
+
+const changeDurability = (targetKey) => {
+    let val = document.getElementById(`item-dur-${targetKey}`).value;
+    characterInfo.charEquipment[targetKey]['item-durability'] = val;
+    if (val == 0) {
+        document.getElementById(`item-dur-${targetKey}`).classList.add('wrong-number');
+    } else {
+        document.getElementById(`item-dur-${targetKey}`).classList.remove('wrong-number');
+    }
+
     localStorage.setItem(characterKey, JSON.stringify(characterInfo));
 }
 
@@ -174,9 +200,9 @@ const changeFocusPoints = () => {
     localStorage.setItem(characterKey, JSON.stringify(characterInfo));
 }
 
+
+
 const hideRollContainer = () => document.getElementById('roll-container').classList.add('hide');
-
-
 
 const diceRoll = (targetId) => {
     let rollContainer = document.getElementById('roll-result');
@@ -208,6 +234,11 @@ const diceRoll = (targetId) => {
 
     rollContainer.innerHTML = `<span>Wynik: ${result}</span><br>${resultDetails}`;
     document.getElementById('roll-container').classList.remove('hide');
+}
+
+const saveCharacterNotes = () => {
+    characterInfo.charNotes = document.getElementById('character-notes').value;
+    localStorage.setItem(characterKey, JSON.stringify(characterInfo));
 }
 
 loadCharacterInfo();
