@@ -61,7 +61,8 @@ const saveCharacter = (event) => {
             clothing:0,
             weapon:0,
         },
-        charAbilities:characterAbilities
+        charAbilities:characterAbilities,
+        charNotes:''
     }
     let charKey = Date.now();
     localStorage.setItem(charKey, JSON.stringify(charObj));
