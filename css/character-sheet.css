@@ -68,16 +68,12 @@ th {
     border: 1px solid #e0e0e0;
 }
 
-td {
+.clickable {
     cursor: pointer;
 }
 
 th, td {
     padding: 1px;
-}
-
-.table-attrs-stats td {
-    cursor: pointer;
 }
 
 .table-attrs-stats tr th,
@@ -90,7 +86,7 @@ th, td {
 }
 
 .table-abilities th:nth-child(1),
-.table-abilities th:nth-child(2) {
+.table-abilities tr:nth-child(1) {
     width: 20%;
 }
 

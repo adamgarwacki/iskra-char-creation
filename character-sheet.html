@@ -21,6 +21,7 @@
         <ul class="menu">
             <li><a href="./edit-character.html">Edytuj postać</a></li>
             <li><a href="https://docs.google.com/document/d/1zO55e7EETfcFPtoB5b1giSAbKwl2naWEa_bKE32MO2Q/edit?usp=sharing" target="_blank">Zasady</a></li>
+            <li><p onclick="downloadCharacter()">Pobierz postać</p></li>
             <li><a href="./characters-list.html">Powrót do listy</a></li>
         </ul>
     </div>
@@ -47,23 +48,23 @@
                     <table class="table-attrs-stats">
                         <tr onclick="diceRoll('displayed-attribute-strength')">
                             <th class="displayed-attribute-label">Siła</th>
-                            <td class="displayed-attribute" id="displayed-attribute-strength"></td>
+                            <td class="displayed-attribute clickable" id="displayed-attribute-strength"></td>
                         </tr>
                         <tr onclick="diceRoll('displayed-attribute-dexterity')">
                             <th class="displayed-attribute-label">Zręczność</th>
-                            <td class="displayed-attribute" id="displayed-attribute-dexterity"></td>
+                            <td class="displayed-attribute clickable" id="displayed-attribute-dexterity"></td>
                         </tr>
                         <tr onclick="diceRoll('displayed-attribute-constitution')">
                             <th class="displayed-attribute-label">Wytrzymałość</th>
-                            <td class="displayed-attribute" id="displayed-attribute-constitution"></td>
+                            <td class="displayed-attribute clickable" id="displayed-attribute-constitution"></td>
                         </tr>
                         <tr onclick="diceRoll('displayed-attribute-intellect')">
                             <th class="displayed-attribute-label">Intelekt</th>
-                            <td class="displayed-attribute" id="displayed-attribute-intellect"></td>
+                            <td class="displayed-attribute clickable" id="displayed-attribute-intellect"></td>
                         </tr>
                         <tr onclick="diceRoll('displayed-attribute-charisma')">
                             <th class="displayed-attribute-label">Charyzma</th>
-                            <td class="displayed-attribute" id="displayed-attribute-charisma"></td>
+                            <td class="displayed-attribute clickable" id="displayed-attribute-charisma"></td>
                         </tr>
                     </table>
                 </div>

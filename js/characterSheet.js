@@ -76,6 +76,7 @@ const loadCharacterInfo = () => {
         /* ZAKŁADANIE */
 
         isWorn.onclick = () => toggleWornEquipment(itemKey);
+        isWorn.classList.add('clickable');
 
         let wornKeys = Object.values(wornEquipment);
         if (item['item-type'] === 'Ubranie' || item['item-type'] === 'Broń') {
@@ -93,7 +94,12 @@ const loadCharacterInfo = () => {
         } else {
             itemAttack.innerText = `---`;
         }
-        itemDamage.innerText = item['item-damage'];
+
+        if (item['item-damage'] == 0) {
+            itemDamage.innerText = '---';
+        } else {
+            itemDamage.innerText = item['item-damage'];
+        }
 
         itemDurability.type = 'number';
         itemDurability.value = item['item-durability'];
@@ -142,7 +148,8 @@ const toggleWornEquipment = (key) => {
                 document.getElementById(`item-entry-${key}`).firstChild.innerText = 'X';
                 document.getElementById('defense-container').innerText = characterInfo.charEquipment[key]['item-defense'];
             } else {
-                document.getElementById(wornEquipment.clothing).firstChild.innerText = '';
+                // console.log(wornEquipment.clothing);
+                document.getElementById(`item-entry-${wornEquipment.clothing}`).firstChild.innerText = '';
                 wornEquipment.clothing = key;
                 document.getElementById('defense-container').innerText = characterInfo.charEquipment[key]['item-defense'];
                 document.getElementById(`item-entry-${key}`).firstChild.innerText = 'X';
@@ -161,7 +168,7 @@ const toggleWornEquipment = (key) => {
                 document.getElementById('damage-container').innerText = characterInfo.charEquipment[key]['item-damage'];
                 document.getElementById(`item-entry-${key}`).firstChild.innerText = 'X';
             } else {
-                document.getElementById(wornEquipment.weapon).firstChild.innerText = '';
+                document.getElementById(`item-entry-${wornEquipment.weapon}`).firstChild.innerText = '';
                 wornEquipment.weapon = key;
                 document.getElementById('attack-mod-container').innerText = characterInfo.charEquipment[key]['item-attack-modifier'];
                 document.getElementById('damage-container').innerText = characterInfo.charEquipment[key]['item-damage'];
@@ -239,6 +246,16 @@ const diceRoll = (targetId) => {
 const saveCharacterNotes = () => {
     characterInfo.charNotes = document.getElementById('character-notes').value;
     localStorage.setItem(characterKey, JSON.stringify(characterInfo));
+}
+
+const downloadCharacter = () => {
+    let e = document.createElement('a');
+    e.href = 'data:text/plain;charset=utf-8,' + encodeURIComponent(characterKey + `:` + JSON.stringify(characterInfo));
+    e.setAttribute('download',characterInfo.charName);
+    e.style.display = 'none';
+    document.body.appendChild(e);
+    e.click();
+    document.body.removeChild(e);
 }
 
 loadCharacterInfo();
