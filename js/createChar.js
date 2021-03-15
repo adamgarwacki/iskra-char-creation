@@ -67,5 +67,5 @@ const saveCharacter = (event) => {
     let charKey = Date.now();
     localStorage.setItem(charKey, JSON.stringify(charObj));
 
-    location.href = "./characters-list.html";
+    location.href = "./index.html";
 }
